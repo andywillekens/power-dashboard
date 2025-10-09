@@ -22,3 +22,23 @@ docker compose up -d
 ```
 
 This command builds and launches the Nuxt development environment within Docker. Once started, you can access the project in your browser at [http://localhost:3000](http://localhost:3000).
+
+## Stopping the Development Environment
+
+To stop and remove the running containers:
+
+```bash
+docker compose down
+```
+
+## Troubleshooting
+
+If you encounter any issues, try rebuilding the containers:
+
+```bash
+docker compose up --build
+```
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests to enhance the setup.
