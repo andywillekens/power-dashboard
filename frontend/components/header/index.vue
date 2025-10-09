@@ -7,7 +7,8 @@ defineProps<{
 </script>
 
 <template>
-  <header class="flex flex-col gap-5 pb-5 border-b border-dark-900 max-w-screen-xl w-full mx-auto">
+  <header
+    class="flex flex-col gap-4 md:gap-8 py-4 md:py-8 border-b border-dark-900 max-w-screen-xl w-full mx-auto">
     <HeaderColorBlocks :is-live-mode="isLiveMode" />
     <HeaderHeading :title="title" :subtitle="subtitle" />
   </header>

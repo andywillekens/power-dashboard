@@ -8,7 +8,7 @@ export const calculateBarHeight = (value: number, label: string, data: ChartData
   const filteredData = data.filter((d) => d.label === label)
   const values = filteredData.flatMap((d) => [d.consumption, d.production])
   const max = Math.max(...values, 1)
-  const multiplier = label === 'Current' ? 100 : 35
+  const multiplier = label === 'Now' ? 60 : 35
   return (value / max) * multiplier
 }
 

@@ -69,9 +69,9 @@ const currentPowerData = computed(() => {
   const net = currentProduced - currentConsumed
 
   return [
-    { label: 'Produced', value: currentProduced, unit: 'W' },
-    { label: 'Consumed', value: currentConsumed, unit: 'W' },
-    { label: 'Net', value: net, unit: 'W' }
+    { label: 'Producing', value: currentProduced, unit: 'W' },
+    { label: 'Consuming', value: currentConsumed, unit: 'W' },
+    { label: 'To/From grid', value: net, unit: 'W' }
   ]
 })
 
@@ -80,9 +80,9 @@ const todayPowerData = computed(() => {
   const net = todayProduced - todayConsumed
 
   return [
-    { label: 'Produced', value: todayProduced, unit: 'kWh' },
+    { label: 'Production', value: todayProduced, unit: 'kWh' },
     { label: 'Consumed', value: todayConsumed, unit: 'kWh' },
-    { label: 'Net', value: net, unit: 'kWh' }
+    { label: 'To/From grid', value: net, unit: 'kWh' }
   ]
 })
 
@@ -104,7 +104,7 @@ const currentPowerVisualData = computed(() => {
     basePowerCalculations.value
 
   return [
-    { consumption: currentConsumed, production: currentProduced, label: 'Current' },
+    { consumption: currentConsumed, production: currentProduced, label: 'Now' },
     { consumption: todayConsumed, production: todayProduced, label: 'Today' }
   ]
 })
@@ -142,20 +142,19 @@ onUnmounted(() => {
 
 <template>
   <Header title="Current" subtitle="Energy dashboard" :is-live-mode="isLiveMode" />
-  <main class="flex flex-col md:flex-row gap-5 w-full max-w-screen-xl mx-auto">
-    <section class="flex flex-col w-full md:w-10/24 pt-5 md:pt-10 md:pr-10 gap-8 md:gap-15">
+  <main class="flex flex-col md:flex-row w-full max-w-screen-xl mx-auto">
+    <section class="flex flex-col w-full md:w-10/24 py-4 md:pt-8 md:pr-8 gap-4 md:gap-8">
       <ContentSectionTitle index="01" title="Energy monitoring" />
 
       <ContentData title="Current power" :items="currentPowerData" />
-      <ContentData title="Total power today" :items="todayPowerData" />
+      <ContentData title="Today’s Total Power" :items="todayPowerData" />
       <ContentData title="API status" :items="apiStatus" />
     </section>
 
     <div class="w-full md:w-[1px] h-[1px] md:min-h-full bg-dark-900"></div>
 
-    <section class="flex flex-col w-full md:w-14/24 py-5 md:pt-10 md:pl-10 gap-5 md:gap-15">
+    <section class="flex flex-col w-full md:w-14/24 py-4 md:pt-8 md:pl-8 gap-4 md:gap-8">
       <ContentSectionTitle index="02" title="Power visualization" />
-
       <ContentChart :data="currentPowerVisualData" />
     </section>
   </main>

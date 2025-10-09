@@ -12,7 +12,7 @@ const chartData = computed(() => {
     return props.data
   }
   return [
-    { consumption: 0, production: 0, label: 'Current' },
+    { consumption: 0, production: 0, label: 'Now' },
     { consumption: 0, production: 0, label: 'Today' }
   ]
 })
@@ -39,25 +39,6 @@ onMounted(() => {
     <div class="z-2 relative flex justify-center gap-8">
       <div v-for="(item, index) in chartData" :key="index" class="flex flex-col items-center gap-4">
         <div class="flex gap-4 items-end">
-          <!-- Power Consumption Bar -->
-          <div class="flex flex-col items-center gap-2">
-            <div class="w-14 sm:w-16 h-60 bg-dark-900/30 flex items-end relative overflow-hidden">
-              <div
-                class="w-full bg-purple-500 transition-all duration-1000 ease-out"
-                :style="{
-                  height: isVisible ? `${getBarHeight(item.consumption, item.label)}%` : '0%',
-                  transform: isVisible ? 'translateY(0)' : 'translateY(100%)'
-                }"></div>
-            </div>
-            <span class="text-xs text-dark-400">
-              Con<span class="inline sm:hidden">.</span>
-              <span class="hidden sm:inline">sumption</span>
-            </span>
-            <span class="text-sm font-medium text-dark-200">
-              {{ formatValueWithUnit(item.consumption, item.label === 'Current') }}
-            </span>
-          </div>
-
           <!-- Power Production Bar -->
           <div class="flex flex-col items-center gap-2">
             <div class="w-14 sm:w-16 h-60 bg-dark-900/30 flex items-end relative overflow-hidden">
@@ -73,7 +54,26 @@ onMounted(() => {
               <span class="hidden sm:inline">uction</span>
             </span>
             <span class="text-sm font-medium text-dark-200">
-              {{ formatValueWithUnit(item.production, item.label === 'Current') }}
+              {{ formatValueWithUnit(item.production, item.label === 'Now') }}
+            </span>
+          </div>
+
+          <!-- Power Consumption Bar -->
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-14 sm:w-16 h-60 bg-dark-900/30 flex items-end relative overflow-hidden">
+              <div
+                class="w-full bg-purple-500 transition-all duration-1000 ease-out"
+                :style="{
+                  height: isVisible ? `${getBarHeight(item.consumption, item.label)}%` : '0%',
+                  transform: isVisible ? 'translateY(0)' : 'translateY(100%)'
+                }"></div>
+            </div>
+            <span class="text-xs text-dark-400">
+              Con<span class="inline sm:hidden">.</span>
+              <span class="hidden sm:inline">sumption</span>
+            </span>
+            <span class="text-sm font-medium text-dark-200">
+              {{ formatValueWithUnit(item.consumption, item.label === 'Now') }}
             </span>
           </div>
         </div>

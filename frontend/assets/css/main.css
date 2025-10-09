@@ -57,7 +57,7 @@
   }
 
   body {
-    @apply font-body bg-dark-950 text-dark-400 p-5;
+    @apply font-body bg-dark-950 text-dark-400 mx-4 md:mx-8;
   }
 
   #__nuxt {
