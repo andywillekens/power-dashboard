@@ -1,7 +1,7 @@
-# Dash
+# Power dashboard
 
 A simple dashboard to show my power generation and consumption.
-You can preview this project here: [https://dash.andywillekens.nl](https://dash.andywillekens.nl)
+You can preview this project here: [https://power.andywillekens.nl](https://power.andywillekens.nl)
 
 ## Requirements
 

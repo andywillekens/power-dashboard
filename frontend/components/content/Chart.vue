@@ -13,7 +13,7 @@ const chartData = computed(() => {
   }
   return [
     { consumption: 0, production: 0, label: 'Current' },
-    { consumption: 0, production: 0, label: 'Today Total' }
+    { consumption: 0, production: 0, label: 'Today' }
   ]
 })
 
@@ -49,11 +49,11 @@ onMounted(() => {
                   transform: isVisible ? 'translateY(0)' : 'translateY(100%)'
                 }"></div>
             </div>
-            <span class="text-xs text-gray-400">
+            <span class="text-xs text-dark-400">
               Con<span class="inline sm:hidden">.</span>
               <span class="hidden sm:inline">sumption</span>
             </span>
-            <span class="text-sm font-medium text-purple-400">
+            <span class="text-sm font-medium text-dark-200">
               {{ formatValueWithUnit(item.consumption, item.label === 'Current') }}
             </span>
           </div>
@@ -68,17 +68,17 @@ onMounted(() => {
                   transform: isVisible ? 'translateY(0)' : 'translateY(-100%)'
                 }"></div>
             </div>
-            <span class="text-xs text-gray-400">
+            <span class="text-xs text-dark-400">
               Prod<span class="inline sm:hidden">.</span>
               <span class="hidden sm:inline">uction</span>
             </span>
-            <span class="text-sm font-medium text-teal-400">
+            <span class="text-sm font-medium text-dark-200">
               {{ formatValueWithUnit(item.production, item.label === 'Current') }}
             </span>
           </div>
         </div>
 
-        <p class="text-sm text-gray-300 text-center">{{ item.label }}</p>
+        <p class="text-sm text-dark-400 text-center">{{ item.label }}</p>
       </div>
     </div>
   </div>

@@ -103,7 +103,7 @@ const currentPowerVisualData = computed(() => {
 
   return [
     { consumption: currentConsumed, production: currentProduced, label: 'Current' },
-    { consumption: todayConsumed, production: todayProduced, label: 'Today Total' }
+    { consumption: todayConsumed, production: todayProduced, label: 'Today' }
   ]
 })
 
@@ -142,8 +142,8 @@ onUnmounted(() => {
 
     <div class="w-full md:w-[1px] h-[1px] md:min-h-full bg-dark-900"></div>
 
-    <section class="flex flex-col w-full md:w-14/24 pt-5 md:pt-10 md:pl-10 gap-5 md:gap-15">
-      <ContentSectionTitle index="02" title="Data visualization" />
+    <section class="flex flex-col w-full md:w-14/24 py-5 md:pt-10 md:pl-10 gap-5 md:gap-15">
+      <ContentSectionTitle index="02" title="Power visualization" />
 
       <ContentChart :data="currentPowerVisualData" />
     </section>
