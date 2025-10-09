@@ -7,23 +7,11 @@ import {
   createYieldSuccessResponse
 } from '../../utils/api'
 
-const DEFAULT_ERROR_RESPONSE = {
-  duration: 0,
-  lastPower: 0,
-  today: 0,
-  co2: 0,
-  lifetime: 0,
-  ecuSign: '',
-  meterFlag: 0
-}
-
 export default defineEventHandler(async (event: H3Event): Promise<PowerYieldData> => {
   const authResult: APSystemsAuthResult = await authHandler(event)
 
   if (!authResult.success) {
-    return createYieldErrorResponse(authResult.error || 'Authentication failed', {
-      raw: DEFAULT_ERROR_RESPONSE
-    })
+    return createYieldErrorResponse(authResult.error || 'Authentication failed')
   }
 
   try {
@@ -45,10 +33,9 @@ export default defineEventHandler(async (event: H3Event): Promise<PowerYieldData
 
     return createYieldSuccessResponse({
       currentPowerYield: Number(data.lastPower) || 0,
-      dailyPowerYield: parseFloat(data.today) || 0,
-      raw: data
+      dailyPowerYield: parseFloat(data.today) || 0
     })
   } catch (error: any) {
-    return handleYieldApiError(error, { raw: DEFAULT_ERROR_RESPONSE })
+    return handleYieldApiError(error)
   }
 })

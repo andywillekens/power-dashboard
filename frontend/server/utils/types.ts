@@ -3,21 +3,18 @@ export interface PowerData {
   currentPowerUsage?: number
   dailyPowerYield?: number
   dailyPowerUsage?: number
-  raw: any
   error?: string
 }
 
 export interface PowerYieldData {
   currentPowerYield: number
   dailyPowerYield: number
-  raw: any
   error?: string
 }
 
 export interface PowerUsageData {
   currentPowerUsage: number
   dailyPowerUsage: number
-  raw: any
   error?: string
 }
 

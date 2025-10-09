@@ -40,8 +40,7 @@ export default defineEventHandler(async (event): Promise<PowerUsageData> => {
 
     return createUsageSuccessResponse({
       currentPowerUsage: powerUsage.value || 0,
-      dailyPowerUsage: (powerUsage.dayUsage || 0) + (powerUsage.dayLowUsage || 0),
-      raw: powerUsage
+      dailyPowerUsage: (powerUsage.dayUsage || 0) + (powerUsage.dayLowUsage || 0)
     })
   } catch (error) {
     return handleUsageApiError(error)

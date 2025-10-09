@@ -8,7 +8,6 @@ export const createErrorResponse = (
   dailyPowerYield: 0,
   currentPowerUsage: 0,
   dailyPowerUsage: 0,
-  raw: {},
   error,
   ...defaultData
 })
@@ -23,7 +22,6 @@ export const createSuccessResponse = (data: Partial<PowerData>): PowerData => ({
   dailyPowerYield: 0,
   currentPowerUsage: 0,
   dailyPowerUsage: 0,
-  raw: {},
   ...data
 })
 
@@ -33,7 +31,6 @@ export const createYieldErrorResponse = (
 ): PowerYieldData => ({
   currentPowerYield: 0,
   dailyPowerYield: 0,
-  raw: {},
   error,
   ...defaultData
 })
@@ -44,7 +41,6 @@ export const createUsageErrorResponse = (
 ): PowerUsageData => ({
   currentPowerUsage: 0,
   dailyPowerUsage: 0,
-  raw: {},
   error,
   ...defaultData
 })
@@ -68,14 +64,12 @@ export const handleUsageApiError = (
 export const createYieldSuccessResponse = (data: Partial<PowerYieldData>): PowerYieldData => ({
   currentPowerYield: 0,
   dailyPowerYield: 0,
-  raw: {},
   ...data
 })
 
 export const createUsageSuccessResponse = (data: Partial<PowerUsageData>): PowerUsageData => ({
   currentPowerUsage: 0,
   dailyPowerUsage: 0,
-  raw: {},
   ...data
 })
 
