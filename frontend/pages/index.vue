@@ -7,6 +7,8 @@ const enecoData = ref<PowerUsageData | null>(null)
 const isLoading = ref(false)
 const error = ref<string | null>(null)
 const isInitialLoad = ref(true)
+const isLiveMode = ref(true)
+const timeRemaining = ref(300) // 5 minutes
 
 const fetchData = async () => {
   try {
@@ -108,32 +110,41 @@ const currentPowerVisualData = computed(() => {
 })
 
 let refreshInterval: NodeJS.Timeout | null = null
+let countdownInterval: NodeJS.Timeout | null = null
+
+const startCountdown = () => {
+  countdownInterval = setInterval(() => {
+    if (--timeRemaining.value <= 0) {
+      isLiveMode.value = false
+      refreshInterval && clearInterval(refreshInterval)
+      countdownInterval && clearInterval(countdownInterval)
+      refreshInterval = null
+      countdownInterval = null
+    }
+  }, 1000)
+}
 
 onMounted(() => {
   fetchData()
   refreshInterval = setInterval(fetchData, 30000)
+  startCountdown()
 })
 
 onUnmounted(() => {
   if (refreshInterval) {
     clearInterval(refreshInterval)
   }
+  if (countdownInterval) {
+    clearInterval(countdownInterval)
+  }
 })
 </script>
 
 <template>
-  <Header title="Current" subtitle="Energy dashboard" />
+  <Header title="Current" subtitle="Energy dashboard" :is-live-mode="isLiveMode" />
   <main class="flex flex-col md:flex-row gap-5 w-full max-w-screen-xl mx-auto">
     <section class="flex flex-col w-full md:w-10/24 pt-5 md:pt-10 md:pr-10 gap-8 md:gap-15">
       <ContentSectionTitle index="01" title="Energy monitoring" />
-      <div v-if="error" class="my-15 p-4 bg-red-900/20 border border-red-500/30 rounded">
-        <p class="text-red-400 text-sm">{{ error }}</p>
-        <button
-          @click="fetchData"
-          class="mt-2 px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-xs rounded transition-colors">
-          Retry
-        </button>
-      </div>
 
       <ContentData title="Current power" :items="currentPowerData" />
       <ContentData title="Total power today" :items="todayPowerData" />
