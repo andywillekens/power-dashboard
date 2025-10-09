@@ -41,44 +41,44 @@ const fetchData = async () => {
   }
 }
 
-const generatedCurrent = computed(() => apsystemsData.value?.currentPowerYield || 0)
+const producedCurrent = computed(() => apsystemsData.value?.currentPowerYield || 0)
 const consumedCurrent = computed(() => enecoData.value?.currentPowerUsage || 0)
-const generatedToday = computed(() => apsystemsData.value?.dailyPowerYield || 0)
+const producedToday = computed(() => apsystemsData.value?.dailyPowerYield || 0)
 const consumedToday = computed(() => enecoData.value?.dailyPowerUsage || 0)
 
-const { currentValue: animatedGeneratedCurrent } = useCountUp(generatedCurrent)
+const { currentValue: animatedProducedCurrent } = useCountUp(producedCurrent)
 const { currentValue: animatedConsumedCurrent } = useCountUp(consumedCurrent)
-const { currentValue: animatedGeneratedToday } = useCountUp(generatedToday)
+const { currentValue: animatedProducedToday } = useCountUp(producedToday)
 const { currentValue: animatedConsumedToday } = useCountUp(consumedToday)
 
 // Optimized base calculations to avoid repeated isInitialLoad checks
 const basePowerCalculations = computed(() => {
   const isInitial = isInitialLoad.value
   return {
-    currentGenerated: isInitial ? 0 : animatedGeneratedCurrent.value,
+    currentProduced: isInitial ? 0 : animatedProducedCurrent.value,
     currentConsumed: isInitial ? 0 : animatedConsumedCurrent.value,
-    todayGenerated: isInitial ? 0 : animatedGeneratedToday.value,
+    todayProduced: isInitial ? 0 : animatedProducedToday.value,
     todayConsumed: isInitial ? 0 : animatedConsumedToday.value / 1000
   }
 })
 
 const currentPowerData = computed(() => {
-  const { currentGenerated, currentConsumed } = basePowerCalculations.value
-  const net = currentGenerated - currentConsumed
+  const { currentProduced, currentConsumed } = basePowerCalculations.value
+  const net = currentProduced - currentConsumed
 
   return [
-    { label: 'Generated', value: currentGenerated, unit: 'W' },
+    { label: 'Produced', value: currentProduced, unit: 'W' },
     { label: 'Consumed', value: currentConsumed, unit: 'W' },
     { label: 'Net', value: net, unit: 'W' }
   ]
 })
 
 const todayPowerData = computed(() => {
-  const { todayGenerated, todayConsumed } = basePowerCalculations.value
-  const net = todayGenerated - todayConsumed
+  const { todayProduced, todayConsumed } = basePowerCalculations.value
+  const net = todayProduced - todayConsumed
 
   return [
-    { label: 'Generated', value: todayGenerated, unit: 'kWh' },
+    { label: 'Produced', value: todayProduced, unit: 'kWh' },
     { label: 'Consumed', value: todayConsumed, unit: 'kWh' },
     { label: 'Net', value: net, unit: 'kWh' }
   ]
@@ -98,12 +98,12 @@ const apiStatus = computed(() => {
 })
 
 const currentPowerVisualData = computed(() => {
-  const { currentGenerated, currentConsumed, todayGenerated, todayConsumed } =
+  const { currentProduced, currentConsumed, todayProduced, todayConsumed } =
     basePowerCalculations.value
 
   return [
-    { consumption: currentConsumed, generation: currentGenerated, label: 'Current' },
-    { consumption: todayConsumed, generation: todayGenerated, label: 'Today Total' }
+    { consumption: currentConsumed, production: currentProduced, label: 'Current' },
+    { consumption: todayConsumed, production: todayProduced, label: 'Today Total' }
   ]
 })
 

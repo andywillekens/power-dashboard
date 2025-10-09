@@ -12,8 +12,8 @@ const chartData = computed(() => {
     return props.data
   }
   return [
-    { consumption: 0, generation: 0, label: 'Current' },
-    { consumption: 0, generation: 0, label: 'Today Total' }
+    { consumption: 0, production: 0, label: 'Current' },
+    { consumption: 0, production: 0, label: 'Today Total' }
   ]
 })
 
@@ -41,7 +41,7 @@ onMounted(() => {
         <div class="flex gap-4 items-end">
           <!-- Power Consumption Bar -->
           <div class="flex flex-col items-center gap-2">
-            <div class="w-16 h-60 bg-dark-900/30 flex items-end relative overflow-hidden">
+            <div class="w-14 sm:w-16 h-60 bg-dark-900/30 flex items-end relative overflow-hidden">
               <div
                 class="w-full bg-purple-500 transition-all duration-1000 ease-out"
                 :style="{
@@ -49,25 +49,31 @@ onMounted(() => {
                   transform: isVisible ? 'translateY(0)' : 'translateY(100%)'
                 }"></div>
             </div>
-            <span class="text-xs text-gray-400">Consumption</span>
+            <span class="text-xs text-gray-400">
+              Con<span class="inline sm:hidden">.</span>
+              <span class="hidden sm:inline">sumption</span>
+            </span>
             <span class="text-sm font-medium text-purple-400">
               {{ formatValueWithUnit(item.consumption, item.label === 'Current') }}
             </span>
           </div>
 
-          <!-- Power Generation Bar -->
+          <!-- Power Production Bar -->
           <div class="flex flex-col items-center gap-2">
-            <div class="w-16 h-60 bg-dark-900/30 flex items-end relative overflow-hidden">
+            <div class="w-14 sm:w-16 h-60 bg-dark-900/30 flex items-end relative overflow-hidden">
               <div
                 class="w-full bg-teal-500 transition-all duration-1000 ease-out"
                 :style="{
-                  height: isVisible ? `${getBarHeight(item.generation, item.label)}%` : '0%',
+                  height: isVisible ? `${getBarHeight(item.production, item.label)}%` : '0%',
                   transform: isVisible ? 'translateY(0)' : 'translateY(-100%)'
                 }"></div>
             </div>
-            <span class="text-xs text-gray-400">Generation</span>
+            <span class="text-xs text-gray-400">
+              Prod<span class="inline sm:hidden">.</span>
+              <span class="hidden sm:inline">uction</span>
+            </span>
             <span class="text-sm font-medium text-teal-400">
-              {{ formatValueWithUnit(item.generation, item.label === 'Current') }}
+              {{ formatValueWithUnit(item.production, item.label === 'Current') }}
             </span>
           </div>
         </div>

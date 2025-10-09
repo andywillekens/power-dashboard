@@ -74,7 +74,7 @@
   }
 
   h1 {
-    @apply text-8xl tracking-tighter uppercase text-dark-200 leading-20;
+    @apply text-6xl sm:text-8xl tracking-tighter uppercase text-dark-200 leading-12 sm:leading-20;
   }
 
   h2 {
