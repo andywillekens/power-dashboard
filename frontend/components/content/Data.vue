@@ -31,7 +31,7 @@ const formatValue = (value: number | 'Online' | 'Offline', unit: string = 'W'): 
 
 <template>
   <div class="flex flex-col gap-1 w-full">
-    <h2 class="mb-4">{{ title }}</h2>
+    <h2 class="mb-2 md:mb-4">{{ title }}</h2>
     <div v-for="(item, index) in items" :key="index" class="flex justify-between">
       <p>{{ item.label }}</p>
       <p :class="getValueClass(item.value)" class="text-dark-200">
