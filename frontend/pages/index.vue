@@ -158,4 +158,8 @@ onUnmounted(() => {
       <ContentChart :data="currentPowerVisualData" />
     </section>
   </main>
+  <ContentGithubLink
+    url="https://github.com/andywillekens/dash"
+    prefix="View this project on"
+    text="GitHub" />
 </template>
