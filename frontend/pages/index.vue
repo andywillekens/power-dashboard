@@ -124,6 +124,27 @@ const startCountdown = () => {
   }, 1000)
 }
 
+const handleRefetch = () => {
+  // Reset the counter
+  timeRemaining.value = 300 // 5 minutes
+  isLiveMode.value = true
+
+  // Clear existing intervals
+  if (refreshInterval) {
+    clearInterval(refreshInterval)
+  }
+  if (countdownInterval) {
+    clearInterval(countdownInterval)
+  }
+
+  // Fetch new data immediately
+  fetchData()
+
+  // Restart the intervals
+  refreshInterval = setInterval(fetchData, 30000)
+  startCountdown()
+}
+
 onMounted(() => {
   fetchData()
   refreshInterval = setInterval(fetchData, 30000)
@@ -141,7 +162,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Header title="Current" subtitle="Energy dashboard" :is-live-mode="isLiveMode" />
+  <Header
+    title="Current"
+    subtitle="Energy dashboard"
+    :is-live-mode="isLiveMode"
+    :on-refetch="handleRefetch" />
   <main class="flex flex-col md:flex-row w-full max-w-screen-xl mx-auto">
     <section class="flex flex-col w-full md:w-10/24 py-4 md:pt-8 md:pr-8 gap-4 md:gap-8">
       <ContentSectionTitle index="01" title="Energy monitoring" />
