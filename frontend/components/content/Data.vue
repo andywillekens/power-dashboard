@@ -22,7 +22,7 @@ const getValueClass = (
   }
 
   if (isGridValue) {
-    return value >= 1 ? 'text-green-500' : value < 0 ? 'text-offline' : null
+    return value >= 1 ? 'text-online' : value < 0 ? 'text-offline' : null
   }
 
   if (value < 0) {
