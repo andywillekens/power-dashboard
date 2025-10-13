@@ -66,23 +66,25 @@ const basePowerCalculations = computed(() => {
 
 const currentPowerData = computed(() => {
   const { currentProduced, currentConsumed } = basePowerCalculations.value
-  const net = currentProduced - currentConsumed
+  const grid = currentProduced - currentConsumed
+  const gridLabel = grid >= 0 ? 'To grid' : 'From grid'
 
   return [
     { label: 'Producing', value: currentProduced, unit: 'W' },
     { label: 'Consuming', value: currentConsumed, unit: 'W' },
-    { label: 'To/From grid', value: net, unit: 'W' }
+    { label: gridLabel, value: grid, unit: 'W', isGridValue: true }
   ]
 })
 
 const todayPowerData = computed(() => {
   const { todayProduced, todayConsumed } = basePowerCalculations.value
-  const net = todayProduced - todayConsumed
+  const grid = todayProduced - todayConsumed
+  const gridLabel = grid >= 0 ? 'To grid' : 'From grid'
 
   return [
     { label: 'Production', value: todayProduced, unit: 'kWh' },
     { label: 'Consumed', value: todayConsumed, unit: 'kWh' },
-    { label: 'To/From grid', value: net, unit: 'kWh' }
+    { label: gridLabel, value: grid, unit: 'kWh', isGridValue: true }
   ]
 })
 
