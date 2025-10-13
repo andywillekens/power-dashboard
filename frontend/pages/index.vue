@@ -109,6 +109,19 @@ const currentPowerVisualData = computed(() => {
   ]
 })
 
+// Dynamic page title with current production and consumption
+const dynamicTitle = computed(() => {
+  const { currentProduced, currentConsumed } = basePowerCalculations.value
+  const produced = Math.round(currentProduced)
+  const consumed = Math.round(currentConsumed)
+  return `↓ ${produced}W ↑ ${consumed}W  | Energy dashboard`
+})
+
+// Set the page title in the document head
+useHead({
+  title: dynamicTitle
+})
+
 let refreshInterval: NodeJS.Timeout | null = null
 let countdownInterval: NodeJS.Timeout | null = null
 
