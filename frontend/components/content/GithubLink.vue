@@ -12,7 +12,7 @@ defineProps<{
     <a
       :href="url"
       target="_blank"
-      class="text-dark-200 cursor-pointer hover:text-teal-500 underline"
+      class="text-dark-200 cursor-pointer hover:text-purple-500 underline"
       >{{ text }}</a
     >
   </div>
