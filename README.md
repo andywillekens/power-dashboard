@@ -5,17 +5,16 @@ You can preview this project here: [https://power.andywillekens.nl](https://powe
 
 ## Requirements
 
-Ensure you have the following installed:
+Ensure you have the following installed and ready to use:
 
-- **Docker** - For containerization
-- **Docker Compose** - For orchestrating multiple containers
+- **Eneco API Credentials** - You need an access token for the Eneco/Toon API. See [https://developer.toon.eu/api-intro](developer.toon.eu) for more inforation.
+- **APSystems user ID** - You need an Authorization ID and check the `Allow visitors to access to this system` checkbox. Log in to [https://apsystemsema.com/ema/index.action](https://apsystemsema.com) and go to settings.
 - **Prettier** - Code formatter (recommended VS Code plugin)
 - **Tailwind CSS IntelliSense** - VS Code plugin for Tailwind class suggestions and completions
-- **TypeScript and JavaScript Language Features** - Bundled with VS Code; ensure it's enabled for optimal support
 
 ## Getting Started
 
-To start the development server locally:
+To start the development server locally with Docker:
 
 ```bash
 docker compose up -d
