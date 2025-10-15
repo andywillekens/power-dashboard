@@ -37,7 +37,7 @@ const barStyle = computed(() => ({
 <template>
   <div class="flex flex-col items-center gap-2">
     <div
-      class="w-14 sm:w-16 h-60 bg-gradient-to-r from-dark-900/30 to-dark-900/10 flex items-end relative overflow-hidden">
+      class="w-14 sm:w-16 h-60 bg-gradient-to-r from-dark-900/10 to-dark-900/30 flex items-end relative overflow-hidden">
       <div
         :class="barClasses"
         class="w-full transition-all duration-1000 ease-out"
