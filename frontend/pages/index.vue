@@ -198,8 +198,14 @@ onUnmounted(() => {
       <ContentChart :data="currentPowerVisualData" />
     </section>
   </main>
-  <ContentGithubLink
-    url="https://github.com/andywillekens/dash"
-    prefix="View this project on"
-    text="GitHub" />
+  <footer class="flex flex-row md:flex-col gap-4 sticky top-[calc(100vh)] pb-4">
+    <ContentPrefixLink
+      url="https://github.com/andywillekens/dash"
+      prefix="View this project on"
+      text="GitHub" />
+    <ContentPrefixLink
+      url="https://x.com/brice_deg"
+      prefix="Design inspired by"
+      text="Brice Deguigne" />
+  </footer>
 </template>
