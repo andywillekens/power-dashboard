@@ -198,7 +198,7 @@ onUnmounted(() => {
       <ContentChart :data="currentPowerVisualData" />
     </section>
   </main>
-  <footer class="flex flex-row md:flex-col gap-4 sticky top-[calc(100vh)] pb-4">
+  <footer class="flex flex-col md:flex-row gap-4 sticky top-[calc(100vh)] pb-4">
     <ContentPrefixLink
       url="https://github.com/andywillekens/dash"
       prefix="View this project on"
