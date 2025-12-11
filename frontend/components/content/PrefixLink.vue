@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="sticky top-[calc(100vh)] pb-4">
+  <div>
     <span v-if="prefix">{{ prefix }}{{ ' ' }}</span>
     <a
       :href="url"
