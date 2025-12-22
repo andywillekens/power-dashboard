@@ -10,7 +10,18 @@ export const createAxiosInstance = () => {
       jar: cookieJar,
       withCredentials: true,
       headers: {
-        'User-Agent': 'Mozilla/5.0'
+        'User-Agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        Accept:
+          'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Accept-Encoding': 'gzip, deflate, br',
+        Connection: 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-User': '?1'
       }
     })
   )
@@ -24,7 +35,14 @@ export const handleAPSystemsLogin = async (
     // Initial login request
     const loginRes = await axiosInstance.get(
       `https://apsystemsema.com/ema/intoDemoUser.action?id=${userId}&locale=en_US`,
-      { maxRedirects: 0, validateStatus: () => true }
+      {
+        maxRedirects: 0,
+        validateStatus: () => true,
+        headers: {
+          Referer: 'https://apsystemsema.com/',
+          Origin: 'https://apsystemsema.com'
+        }
+      }
     )
 
     // Follow redirect if needed
