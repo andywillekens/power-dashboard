@@ -14,7 +14,7 @@ Ensure you have the following installed and ready to use:
 
 ## Getting Started
 
-To start the development server locally with Docker:
+To start the development server locally:
 
 ```bash
 docker compose up -d
@@ -35,7 +35,7 @@ docker compose down
 If you encounter any issues, try rebuilding the containers:
 
 ```bash
-docker compose up --build
+docker compose up -d --force-recreate --build
 ```
 
 ## Contributing
